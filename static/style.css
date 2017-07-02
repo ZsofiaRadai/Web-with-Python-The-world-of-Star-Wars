@@ -1,0 +1,36 @@
+table, th, td {
+    border: 1pt solid rgba(160, 156, 173, 0.43);;
+    padding: 5px;
+    text-align: left;
+}
+
+th {
+    vertical-align: bottom;
+}
+
+#SWP_th {
+    width: 15%;
+}
+
+table {
+    border-collapse: collapse;
+    padding: 5px;
+    width: 80%;
+    margin: 10px;
+    text-align: center;
+}
+
+h1 {
+    color: rgb(101, 87, 87);
+    margin: 20px;
+}
+
+#controll-buttons .btn {
+    display: none;
+    margin-left: 20px;
+    margin-right: -10px;
+}
+
+td, th {
+    padding: 5px;
+}
