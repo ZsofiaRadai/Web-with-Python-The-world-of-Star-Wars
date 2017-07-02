@@ -15,8 +15,31 @@ function defineNavigationButtonsListeners() {
 }
 
 function defineResidentsButtonsListeners() {
-    $('#planet_data .resident').click(function() {
+    $('#planet_data .resident').click(function(residents) {
         $('#residents-modal').modal('show');
+        for (var j = 0; j < residents.length; j++) {
+            $.ajax({
+                dataType: "json",
+                url: residents[j],
+                success: function(response) {
+
+                    var residentTable = $("#resident_data");
+                    var residentRow = `
+                    <tr>
+                        <td>${response.name}</td>
+                        <td class="diam">${response.height}</td>
+                        <td>${response.mass}</td>
+                        <td>${response.hair_color}</td>
+                        <td class="water">${response.skin_color}</td>
+                        <td class="ppl">${response.eye_color}</td>
+                        <td>${response.birth_year}</td>
+                        <td>${response.gender}</td>
+                    </tr>`;
+                    
+                    residentTable.append(residentRow);
+                }
+            });
+        }
     });
 }
 
@@ -66,31 +89,8 @@ function loadPlanets(url = 'https://swapi.co/api/planets') {
                     <td><input class="btn btn-primary resident" type="button" value=${numberOfResidents} /></td>
                 </tr>`;
                 planetTable.append(planetRow);
-                defineResidentsButtonsListeners();
+                defineResidentsButtonsListeners(residents);
                 
-                for (var j = 0; j < residents.length; j++) {
-                        $.ajax({
-                            dataType: "json",
-                            url: residents[j],
-                            success: function(response) {
-
-                                var residentTable = $("#resident_data");
-                                var residentRow = `
-                                <tr>
-                                    <td>${response.name}</td>
-                                    <td class="diam">${response.height}</td>
-                                    <td>${response.mass}</td>
-                                    <td>${response.hair_color}</td>
-                                    <td class="water">${response.skin_color}</td>
-                                    <td class="ppl">${response.eye_color}</td>
-                                    <td>${response.birth_year}</td>
-                                    <td>${response.gender}</td>
-                                </tr>`;
-                                
-                                residentTable.append(residentRow);
-                            }
-                        });
-                }
             }
             setNavigationButtonLinks(response.next, response.previous);
         }
