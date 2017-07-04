@@ -43,7 +43,7 @@ function defineResidentsButtonsListeners(residents) {
     });
 }
 
-function loadPlanets(url = 'https://swapi.co/api/planets') {
+function loadPlanets(url = 'http://swapi.co/api/planets') {
     
     $.ajax({
         dataType: "json",
