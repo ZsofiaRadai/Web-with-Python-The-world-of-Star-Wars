@@ -14,7 +14,7 @@ function defineNavigationButtonsListeners() {
     });
 }
 
-function defineResidentsButtonsListeners() {
+function defineResidentsButtonsListeners(residents) {
     $('#planet_data .resident').click(function(residents) {
         $('#residents-modal').modal('show');
         for (var j = 0; j < residents.length; j++) {
